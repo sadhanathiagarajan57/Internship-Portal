@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>View Applications | Company Dashboard</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #2a5298, #1e3c72);
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: rgba(0, 0, 0, 0.4);
+      text-align: center;
+      padding: 20px;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 25px;
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    }
+
+    h2 {
+      text-align: center;
+      color: #ffd700;
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    th, td {
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 12px;
+      text-align: center;
+      font-size: 15px;
+    }
+
+    th {
+      background: rgba(0, 0, 0, 0.4);
+      color: #ffd700;
+    }
+
+    tr:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .btn {
+      background-color: #ffd700;
+      color: #000;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #fff;
+      color: #2a5298;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: rgba(0, 0, 0, 0.4);
+      margin-top: 40px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <header>View Applications - Company Dashboard</header>
+
+  <div class="container">
+    <h2>Internship Applications Received</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Application ID</th>
+          <th>Student Name</th>
+          <th>Internship Title</th>
+          <th>Skills</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="applicationTable">
+        <tr>
+          <td>101</td>
+          <td>Sadhana</td>
+          <td>Web Development Intern</td>
+          <td>HTML, CSS, JavaScript</td>
+          <td>Pending</td>
+          <td>
+            <button class="btn" onclick="updateStatus(this, 'Accepted')">Accept</button>
+            <button class="btn" onclick="updateStatus(this, 'Rejected')">Reject</button>
+          </td>
+        </tr>
+        <tr>
+          <td>102</td>
+          <td>Rahul</td>
+          <td>Data Analyst Intern</td>
+          <td>Python, Excel</td>
+          <td>Pending</td>
+          <td>
+            <button class="btn" onclick="updateStatus(this, 'Accepted')">Accept</button>
+            <button class="btn" onclick="updateStatus(this, 'Rejected')">Reject</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+            <a href="company_dashboard.html" class="back-link">⬅ Back to Dashboard</a>
+  </div>
+
+  <footer>© 2025 Internship Portal | Company Dashboard</footer>
+
+  <script>
+    function updateStatus(button, newStatus) {
+      const row = button.closest('tr');
+      const statusCell = row.cells[4];
+      statusCell.textContent = newStatus;
+
+      if (newStatus === 'Accepted') {
+        statusCell.style.color = '#00ff00';
+      } else if (newStatus === 'Rejected') {
+        statusCell.style.color = '#ff4d4d';
+      }
+      alert(`Application has been ${newStatus.toLowerCase()}!`);
+    }
+  </script>
+</body>
+</html>

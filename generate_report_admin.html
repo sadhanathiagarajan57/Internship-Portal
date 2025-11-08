@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Generate Reports | Admin Dashboard</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      color: #fff;
+    }
+
+    header {
+      background: rgba(0, 0, 0, 0.4);
+      padding: 20px;
+      text-align: center;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      text-align: center;
+    }
+
+    h2 {
+      color: #ffd700;
+      font-size: 30px;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      background-color: #ffd700;
+      color: #000;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 30px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 10px;
+    }
+
+    .btn:hover {
+      background-color: #fff;
+      color: #1e3c72;
+    }
+
+    .report-section {
+      margin-top: 30px;
+      display: none;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    th, td {
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 12px;
+      text-align: center;
+    }
+
+    th {
+      background: rgba(0, 0, 0, 0.5);
+      color: #ffd700;
+    }
+
+    tr:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: rgba(0, 0, 0, 0.4);
+      margin-top: 40px;
+      font-size: 14px;
+    }
+
+    .summary {
+      margin-top: 20px;
+      text-align: left;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 15px;
+      border-radius: 10px;
+    }
+
+    .summary h3 {
+      color: #ffd700;
+      margin-bottom: 10px;
+    }
+
+    .summary p {
+      margin: 5px 0;
+    }
+  </style>
+</head>
+
+<body>
+  <header>Generate Reports - Admin Dashboard</header>
+
+  <div class="container">
+    <h2>Internship Portal Reports</h2>
+    <p>Click below to generate the summary report for internships, companies, students, and applications.</p>
+
+    <button class="btn" onclick="generateReport()">Generate Report</button>
+
+    <div id="reportSection" class="report-section">
+      <h3>📊 Report Summary</h3>
+      <div class="summary">
+        <p><strong>Total Students Registered:</strong> <span id="studentsCount">0</span></p>
+        <p><strong>Total Companies Registered:</strong> <span id="companiesCount">0</span></p>
+        <p><strong>Total Internships Posted:</strong> <span id="internshipsCount">0</span></p>
+        <p><strong>Total Applications Submitted:</strong> <span id="applicationsCount">0</span></p>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Total</th>
+            <th>Last Updated</th>
+          </tr>
+        </thead>
+        <tbody id="reportTable">
+          <!-- Data will appear here -->
+        </tbody>
+      </table>
+      <a href="admin_dashboard.html" class="back-link">⬅ Back to Dashboard</a>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 Internship & Training Portal | Admin Dashboard
+  </footer>
+
+  <script>
+    function generateReport() {
+      const students = 125;
+      const companies = 15;
+      const internships = 25;
+      const applications = 80;
+      const date = new Date().toLocaleString();
+
+      document.getElementById("studentsCount").textContent = students;
+      document.getElementById("companiesCount").textContent = companies;
+      document.getElementById("internshipsCount").textContent = internships;
+      document.getElementById("applicationsCount").textContent = applications;
+
+      const reportTable = document.getElementById("reportTable");
+      reportTable.innerHTML = `
+        <tr><td>Students</td><td>${students}</td><td>${date}</td></tr>
+        <tr><td>Companies</td><td>${companies}</td><td>${date}</td></tr>
+        <tr><td>Internships</td><td>${internships}</td><td>${date}</td></tr>
+        <tr><td>Applications</td><td>${applications}</td><td>${date}</td></tr>
+      `;
+
+      document.getElementById("reportSection").style.display = "block";
+      alert("✅ Report Generated Successfully!");
+    }
+  </script>
+</body>
+</html>

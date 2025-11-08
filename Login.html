@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | Internship & Training Portal</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #4e54c8, #8f94fb);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      width: 350px;
+      padding: 40px 30px;
+      text-align: center;
+      backdrop-filter: blur(8px);
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .container h2 {
+      margin-bottom: 20px;
+      font-size: 28px;
+      letter-spacing: 1px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 25px;
+      outline: none;
+      font-size: 15px;
+      text-align: center;
+    }
+
+    .login-btn {
+      background: #ffd700;
+      color: #000;
+      border: none;
+      padding: 12px;
+      width: 100%;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s;
+    }
+
+    .login-btn:hover {
+      background: #fff;
+      color: #4e54c8;
+      transform: scale(1.05);
+    }
+
+    .role-select {
+      margin: 15px 0;
+      width: 100%;
+      padding: 10px;
+      border-radius: 25px;
+      border: none;
+      text-align: center;
+      font-size: 15px;
+    }
+
+    .links {
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .links a {
+      color: #ffd700;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .links a:hover {
+      text-decoration: underline;
+    }
+
+    .home-link {
+      display: block;
+      margin-top: 20px;
+      font-size: 14px;
+      color: #fff;
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 8px 16px;
+      border-radius: 20px;
+      transition: 0.3s;
+    }
+
+    .home-link:hover {
+      background: #fff;
+      color: #4e54c8;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+
+  <script>
+    function loginUser(event) {
+      event.preventDefault();
+      const role = document.getElementById("role").value;
+
+      if (role === "student") {
+        window.location.href = "student_dashboard.html";
+      } else if (role === "company") {
+        window.location.href = "company_dashboard.html";
+      } else if (role === "admin") {
+        window.location.href = "admin_dashboard.html";
+      } else {
+        alert("Please select a role to continue!");
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <h2>Login</h2>
+    <form onsubmit="loginUser(event)">
+      <input type="text" id="username" placeholder="Enter username" required />
+      <input type="password" id="password" placeholder="Enter Password" required />
+
+      <select id="role" class="role-select">
+        <option value="">Select Role</option>
+        <option value="student">Student</option>
+        <option value="company">Company</option>
+        <option value="admin">Admin</option>
+      </select>
+
+      <button type="submit" class="login-btn">Login</button>
+    </form>
+
+    <div class="links">
+      <p>Don't have an account? <a href="register.html">Register here</a></p>
+    </div>
+
+    <a href="index.html" class="home-link">← Back to Home</a>
+  </div>
+</body>
+</html>

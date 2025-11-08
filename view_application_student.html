@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Applications | Student Portal</title>
+
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #4e54c8, #8f94fb);
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 20px;
+      text-align: center;
+      font-size: 26px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 30px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #ffd700;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    th {
+      background: rgba(0, 0, 0, 0.4);
+      color: #ffd700;
+      text-transform: uppercase;
+      font-size: 14px;
+    }
+
+    tr:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transition: 0.3s;
+    }
+
+    .no-data {
+      text-align: center;
+      padding: 20px;
+      font-size: 18px;
+      color: #ffd700;
+    }
+
+    .back-link {
+      display: block;
+      text-align: center;
+      margin-top: 25px;
+      color: #ffd700;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .back-link:hover {
+      color: #fff;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+  <header>My Applications</header>
+
+  <div class="container">
+    <h2>Internship Applications</h2>
+
+    <table id="applicationsTable">
+      <tr>
+        <th>Company</th>
+        <th>Role</th>
+        <th>Status</th>
+      </tr>
+      <!-- Applications will load here -->
+    </table>
+
+    <p class="no-data" id="noData">You haven’t applied for any internships yet.</p>
+
+    <a href="student_dashboard.html" class="back-link">⬅ Back to Dashboard</a>
+  </div>
+
+  <script>
+    // Fetch applications from localStorage
+    const applications = JSON.parse(localStorage.getItem("applications")) || [];
+    const table = document.getElementById("applicationsTable");
+    const noData = document.getElementById("noData");
+
+    if (applications.length > 0) {
+      noData.style.display = "none";
+      applications.forEach(app => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${app.company}</td>
+          <td>${app.role}</td>
+          <td>${app.status}</td>
+        `;
+        table.appendChild(row);
+      });
+    } else {
+      noData.style.display = "block";
+    }
+  </script>
+</body>
+</html>

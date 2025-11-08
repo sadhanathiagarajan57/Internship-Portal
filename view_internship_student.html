@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Available Internships | Student Portal</title>
+
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #4e54c8, #8f94fb);
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 20px;
+      text-align: center;
+      font-size: 26px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 30px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #ffd700;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    th {
+      background: rgba(0, 0, 0, 0.4);
+      color: #ffd700;
+      text-transform: uppercase;
+      font-size: 14px;
+    }
+
+    tr:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transition: 0.3s;
+    }
+
+    button {
+      background-color: #ffd700;
+      color: #000;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #fff;
+      color: #4e54c8;
+    }
+
+    .back-link {
+      display: block;
+      text-align: center;
+      margin-top: 25px;
+      color: #ffd700;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .back-link:hover {
+      color: #fff;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+  <header>Available Internships</header>
+
+  <div class="container">
+    <h2>Explore Opportunities</h2>
+
+    <table>
+      <tr>
+        <th>Company</th>
+        <th>Role</th>
+        <th>Duration</th>
+        <th>Location</th>
+        <th>Action</th>
+      </tr>
+
+      <tr>
+        <td>ABC Tech Solutions</td>
+        <td>Web Developer Intern</td>
+        <td>3 Months</td>
+        <td>Remote</td>
+        <td><button onclick="apply('ABC Tech Solutions', 'Web Developer Intern')">Apply</button></td>
+      </tr>
+
+      <tr>
+        <td>DataCorp Analytics</td>
+        <td>Data Analyst Intern</td>
+        <td>6 Months</td>
+        <td>Bangalore</td>
+        <td><button onclick="apply('DataCorp Analytics', 'Data Analyst Intern')">Apply</button></td>
+      </tr>
+
+      <tr>
+        <td>InnovateAI</td>
+        <td>Machine Learning Intern</td>
+        <td>4 Months</td>
+        <td>Chennai</td>
+        <td><button onclick="apply('InnovateAI', 'Machine Learning Intern')">Apply</button></td>
+      </tr>
+
+      <tr>
+        <td>CyberSec Labs</td>
+        <td>Cybersecurity Intern</td>
+        <td>5 Months</td>
+        <td>Delhi</td>
+        <td><button onclick="apply('CyberSec Labs', 'Cybersecurity Intern')">Apply</button></td>
+      </tr>
+    </table>
+
+    <a href="student_dashboard.html" class="back-link">⬅ Back to Dashboard</a>
+  </div>
+
+  <script>
+    // Store applications temporarily in browser
+    function apply(company, role) {
+      const applications = JSON.parse(localStorage.getItem("applications")) || [];
+      const newApp = { company, role, status: "Pending" };
+      applications.push(newApp);
+      localStorage.setItem("applications", JSON.stringify(applications));
+
+      alert(`You have successfully applied for ${role} at ${company}!`);
+    }
+  </script>
+</body>
+</html>

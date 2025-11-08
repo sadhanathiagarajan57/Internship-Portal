@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edit Profile | Student Dashboard</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #4e54c8, #8f94fb);
+      color: #fff;
+    }
+
+    header {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 20px;
+      text-align: center;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    h2 {
+      text-align: center;
+      color: #ffd700;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: 500;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      margin-bottom: 15px;
+      outline: none;
+    }
+
+    input[type="file"] {
+      border: 1px solid #ccc;
+      background: #fff;
+      color: #000;
+      padding: 10px;
+    }
+
+    textarea {
+      height: 80px;
+      resize: none;
+    }
+
+    .btn {
+      background-color: #ffd700;
+      color: #000;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 30px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      width: 100%;
+    }
+
+    .btn:hover {
+      background: #fff;
+      color: #4e54c8;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: rgba(0, 0, 0, 0.3);
+      margin-top: 40px;
+      font-size: 14px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .success-message {
+      display: none;
+      text-align: center;
+      color: #00ff88;
+      margin-top: 10px;
+    }
+
+    .file-name {
+      font-size: 14px;
+      color: #fff;
+      margin-top: -10px;
+      margin-bottom: 10px;
+      text-align: left;
+    }
+  </style>
+</head>
+
+<body>
+  <header>Edit Profile - Student Dashboard</header>
+
+  <div class="container">
+    <h2>Update Your Profile</h2>
+
+    <form id="editProfileForm">
+      <label>Full Name</label>
+      <input type="text" id="name" placeholder="Enter your full name" required />
+
+      <label>Email</label>
+      <input type="email" id="email" placeholder="Enter your email" required />
+
+      <label>Department</label>
+      <select id="department">
+        <option value="CSE">Computer Science</option>
+        <option value="IT">Information Technology</option>
+        <option value="ECE">Electronics</option>
+        <option value="EEE">Electrical</option>
+        <option value="MECH">Mechanical</option>
+        <option value="CIVIL">Civil</option>
+      </select>
+
+      <label>Skills</label>
+      <textarea id="skills" placeholder="E.g., Python, HTML, Machine Learning"></textarea>
+
+      <label>Upload Resume (PDF)</label>
+      <input type="file" id="resume" accept=".pdf" />
+      <p class="file-name" id="fileName"></p>
+
+      <button type="submit" class="btn">Save Changes</button>
+      <p class="success-message" id="successMsg">✅ Profile updated successfully!</p>
+    </form>
+  </div>
+
+  <footer>
+    © 2025 Internship & Training Portal | Student Dashboard
+  </footer>
+
+  <script>
+    const form = document.getElementById("editProfileForm");
+    const resumeInput = document.getElementById("resume");
+    const fileNameDisplay = document.getElementById("fileName");
+    const successMsg = document.getElementById("successMsg");
+
+    resumeInput.addEventListener("change", function() {
+      const file = resumeInput.files[0];
+      if (file) {
+        fileNameDisplay.textContent = `Selected file: ${file.name}`;
+      } else {
+        fileNameDisplay.textContent = "";
+      }
+    });
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      successMsg.style.display = "block";
+      setTimeout(() => {
+        successMsg.style.display = "none";
+      }, 3000);
+      form.reset();
+      fileNameDisplay.textContent = "";
+    });
+  </script>
+</body>
+</html>

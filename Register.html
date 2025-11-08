@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register | Internship & Training Portal</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #8f94fb, #4e54c8);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      width: 380px;
+      padding: 35px 30px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      font-size: 28px;
+      letter-spacing: 1px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 25px;
+      outline: none;
+      font-size: 15px;
+      text-align: center;
+    }
+
+    .role-select {
+      margin: 10px 0;
+      width: 100%;
+      padding: 10px;
+      border-radius: 25px;
+      border: none;
+      text-align: center;
+      font-size: 15px;
+    }
+
+    .register-btn {
+      background: #ffd700;
+      color: #000;
+      border: none;
+      padding: 12px;
+      width: 100%;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s;
+    }
+
+    .register-btn:hover {
+      background: #fff;
+      color: #4e54c8;
+      transform: scale(1.05);
+    }
+
+    .links {
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .links a {
+      color: #ffd700;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .links a:hover {
+      text-decoration: underline;
+    }
+
+    .home-link {
+      display: block;
+      margin-top: 20px;
+      font-size: 14px;
+      color: #fff;
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 8px 16px;
+      border-radius: 20px;
+      transition: 0.3s;
+    }
+
+    .home-link:hover {
+      background: #fff;
+      color: #4e54c8;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+
+  <script>
+    function registerUser(event) {
+      event.preventDefault();
+      const role = document.getElementById("role").value;
+      if (role === "") {
+        alert("Please select your role before registering!");
+        return;
+      }
+
+      alert("Registration successful! Redirecting to login page...");
+      window.location.href = "login.html";
+    }
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <h2>Register</h2>
+
+    <form onsubmit="registerUser(event)">
+      <input type="text" id="name" placeholder="Full Name" required />
+      <input type="email" id="email" placeholder="Email" required />
+      <input type="text" id="username" placeholder="username" required />
+      <input type="password" id="password" placeholder="Password" required />
+
+      <select id="role" class="role-select">
+        <option value="">Select Role</option>
+        <option value="student">Student</option>
+        <option value="company">Company</option>
+        <option value="admin">Admin</option>
+      </select>
+
+      <button type="submit" class="register-btn">Register</button>
+    </form>
+
+    <div class="links">
+      <p>Already have an account? <a href="login.html">Login here</a></p>
+    </div>
+
+    <a href="index.html" class="home-link">← Back to Home</a>
+  </div>
+</body>
+</html>

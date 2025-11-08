@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All Dashboards | Internship Portal</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #2193b0, #6dd5ed);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    header {
+      background: #004d61;
+      color: white;
+      width: 100%;
+      text-align: center;
+      padding: 15px 0;
+      font-size: 1.5em;
+      letter-spacing: 1px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    }
+
+    .tab-container {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+    }
+
+    .tab-container button {
+      background-color: white;
+      border: none;
+      padding: 12px 25px;
+      margin: 0 5px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .tab-container button:hover {
+      background-color: #004d61;
+      color: white;
+    }
+
+    .tab-container button.active {
+      background-color: #004d61;
+      color: white;
+    }
+
+    .dashboard {
+      display: none;
+      background-color: white;
+      width: 85%;
+      max-width: 900px;
+      border-radius: 10px;
+      padding: 25px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      margin-bottom: 30px;
+    }
+
+    .dashboard.active {
+      display: block;
+    }
+
+    h2 {
+      color: #004d61;
+      margin-bottom: 15px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #004d61;
+      color: white;
+    }
+
+    .logout-btn {
+      display: block;
+      margin: 20px auto;
+      background: #e63946;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .logout-btn:hover {
+      background-color: #c92433;
+    }
+  </style>
+</head>
+
+<body>
+  <header>Internship / Industrial Training Portal</header>
+
+  <div class="tab-container">
+    <button class="tab-button active" onclick="showDashboard('student')">Student Dashboard</button>
+    <button class="tab-button" onclick="showDashboard('company')">Company Dashboard</button>
+    <button class="tab-button" onclick="showDashboard('admin')">Admin Dashboard</button>
+  </div>
+
+  <!-- Student Dashboard -->
+  <div id="student" class="dashboard active">
+    <h2>🎓 Student Dashboard</h2>
+    <p>Welcome, student! Here are your applied internships:</p>
+    <table>
+      <tr><th>Internship Title</th><th>Company</th><th>Status</th></tr>
+      <tr><td>Web Developer Intern</td><td>ABC Tech</td><td>Pending</td></tr>
+      <tr><td>Data Analyst Intern</td><td>DataCorp</td><td>Accepted</td></tr>
+    </table>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </div>
+
+  <!-- Company Dashboard -->
+  <div id="company" class="dashboard">
+    <h2>🏢 Company Dashboard</h2>
+    <p>Welcome, company representative! Here are your posted internships:</p>
+    <table>
+      <tr><th>Internship Title</th><th>Applicants</th><th>Status</th></tr>
+      <tr><td>Frontend Developer</td><td>12</td><td>Open</td></tr>
+      <tr><td>Machine Learning Intern</td><td>8</td><td>Closed</td></tr>
+    </table>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </div>
+
+  <!-- Admin Dashboard -->
+  <div id="admin" class="dashboard">
+    <h2>🧑‍💼 Admin Dashboard</h2>
+    <p>Welcome, admin! Here’s an overview of the platform:</p>
+    <table>
+      <tr><th>Category</th><th>Count</th></tr>
+      <tr><td>Registered Students</td><td>120</td></tr>
+      <tr><td>Registered Companies</td><td>30</td></tr>
+      <tr><td>Active Internships</td><td>25</td></tr>
+    </table>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </div>
+
+  <script>
+    function showDashboard(tabId) {
+      const dashboards = document.querySelectorAll('.dashboard');
+      const buttons = document.querySelectorAll('.tab-button');
+
+      dashboards.forEach(d => d.classList.remove('active'));
+      buttons.forEach(b => b.classList.remove('active'));
+
+      document.getElementById(tabId).classList.add('active');
+      event.target.classList.add('active');
+    }
+
+    function logout() {
+      alert("You have logged out successfully!");
+      window.location.href = "login.html"; // Go back to login page
+    }
+  </script>
+</body>
+</html>

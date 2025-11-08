@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>View Companies | Admin Dashboard</title>
+
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #1f4037, #99f2c8);
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: rgba(0, 0, 0, 0.5);
+      text-align: center;
+      padding: 20px;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 25px;
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    }
+
+    h2 {
+      text-align: center;
+      color: #ffd700;
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    th, td {
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 12px;
+      text-align: center;
+      font-size: 15px;
+    }
+
+    th {
+      background: rgba(0, 0, 0, 0.5);
+      color: #ffd700;
+    }
+
+    tr:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .btn {
+      background-color: #ffd700;
+      color: #000;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #fff;
+      color: #1f4037;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: rgba(0, 0, 0, 0.4);
+      margin-top: 40px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>View Companies - Admin Dashboard</header>
+
+  <div class="container">
+    <h2>Registered Companies</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Company ID</th>
+          <th>Company Name</th>
+          <th>Email</th>
+          <th>Industry</th>
+          <th>Internships Posted</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+      <tbody id="companyTable">
+        <tr>
+          <td>C001</td>
+          <td>TechVision Pvt Ltd</td>
+          <td>hr@techvision.com</td>
+          <td>Information Technology</td>
+          <td>Web Developer, Data Analyst</td>
+          <td>Approved</td>
+          <td>
+            <button class="btn" onclick="updateStatus(this, 'Blocked')">Block</button>
+            <button class="btn" onclick="updateStatus(this, 'Approved')">Approve</button>
+          </td>
+        </tr>
+
+        <tr>
+          <td>C002</td>
+          <td>DataSphere Analytics</td>
+          <td>info@datasphere.com</td>
+          <td>Data Science</td>
+          <td>Data Analyst Intern</td>
+          <td>Pending</td>
+          <td>
+            <button class="btn" onclick="updateStatus(this, 'Blocked')">Block</button>
+            <button class="btn" onclick="updateStatus(this, 'Approved')">Approve</button>
+          </td>
+        </tr>
+
+        <tr>
+          <td>C003</td>
+          <td>ElectroSoft Solutions</td>
+          <td>contact@electrosoft.com</td>
+          <td>Electronics</td>
+          <td>Embedded Systems Intern</td>
+          <td>Approved</td>
+          <td>
+            <button class="btn" onclick="updateStatus(this, 'Blocked')">Block</button>
+            <button class="btn" onclick="updateStatus(this, 'Approved')">Approve</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <a href="admin_dashboard.html" class="back-link">⬅ Back to Dashboard</a>
+  </div>
+
+  <footer>
+    © 2025 Internship Portal | Admin Dashboard
+  </footer>
+
+  <script>
+    function updateStatus(button, newStatus) {
+      const row = button.closest('tr');
+      const statusCell = row.cells[5];
+      statusCell.textContent = newStatus;
+
+      if (newStatus === 'Approved') {
+        statusCell.style.color = '#00ff00';
+      } else if (newStatus === 'Blocked') {
+        statusCell.style.color = '#ff4d4d';
+      }
+
+      alert(`Company has been ${newStatus.toLowerCase()}!`);
+    }
+  </script>
+</body>
+</html>

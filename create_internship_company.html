@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Internship | Company Dashboard</title>
+
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      text-align: center;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 20px;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 40px auto;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+    }
+
+    h2 {
+      text-align: center;
+      color: #ffd700;
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-weight: 500;
+      display: block;
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      font-size: 14px;
+    }
+
+    textarea {
+      resize: none;
+      height: 100px;
+    }
+
+    .btn {
+      background-color: #ffd700;
+      color: #000;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 25px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      display: block;
+      width: 100%;
+    }
+
+    .btn:hover {
+      background-color: #fff;
+      color: #1e3c72;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: rgba(0, 0, 0, 0.4);
+      margin-top: 40px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>Create New Internship - Company Dashboard</header>
+
+  <div class="container">
+    <h2>Post Internship Details</h2>
+
+    <form id="internshipForm">
+      <label for="title">Internship Title:</label>
+      <input type="text" id="title" name="title" placeholder="e.g. Web Developer Intern" required>
+
+      <label for="location">Location:</label>
+      <input type="text" id="location" name="location" placeholder="e.g. Remote / Chennai" required>
+
+      <label for="duration">Duration:</label>
+      <input type="text" id="duration" name="duration" placeholder="e.g. 3 Months" required>
+
+      <label for="stipend">Stipend:</label>
+      <input type="text" id="stipend" name="stipend" placeholder="e.g. ₹5000/month">
+
+      <label for="skills">Required Skills:</label>
+      <input type="text" id="skills" name="skills" placeholder="e.g. HTML, CSS, JavaScript" required>
+
+      <label for="description">Job Description:</label>
+      <textarea id="description" name="description" placeholder="Enter internship details here..." required></textarea>
+
+      <button type="submit" class="btn">Create Internship</button>
+    </form>
+    <a href="company_dashboard.html" class="back-link">⬅ Back to Dashboard</a>
+  </div>
+
+  <footer>
+    © 2025 Internship Portal | Company Dashboard
+  </footer>
+
+  <script>
+    document.getElementById("internshipForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      alert("✅ Internship Created Successfully!");
+
+      // redirect back to company dashboard
+      window.location.href = "company_dashboard.html";
+    });
+  </script>
+</body>
+</html>
